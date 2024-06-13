@@ -11,4 +11,6 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Delete', @user, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', users_path %>
+
