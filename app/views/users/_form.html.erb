@@ -1,0 +1,37 @@
+<%= form_with(model: user) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, autofocus: true, required: false %>
+    <% if user.errors[:name].any? %>
+      <p><%= user.errors[:name].first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, required: false %>
+    <% if user.errors[:email].any? %>
+      <p><%= user.errors[:email].first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: false %>
+    <% if user.errors[:password].any? %>
+      <p><%= user.errors[:password].first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, required: false %>
+    <% if user.errors[:password_confirmation].any? %>
+      <p><%= user.errors[:password_confirmation].first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit user.new_record? ? 'Create Account' : 'Update Account' %>
+  </div>
+<% end %>
