@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '3.3.1'
 
 gem 'bootsnap', require: false
-gem 'dotenv-rails', groups: %i[development test]
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
@@ -15,6 +14,7 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'rspec-rails'
 end
 
