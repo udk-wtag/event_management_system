@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   resources :users
   get 'signup', to: 'users#new'
+
+  get 'events', to: 'events#index'
 end
