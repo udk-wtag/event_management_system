@@ -1,0 +1,19 @@
+<!-- app/views/registrations/index.html.erb -->
+<h1>Registrations for <%= link_to @event.name, @event %></h1>
+
+<% @registrations.each do |r| %>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Registration Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= r.user.name %></td>
+        <td><%= r.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
