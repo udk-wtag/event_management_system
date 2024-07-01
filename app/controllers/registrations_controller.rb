@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
 
+  before_action :require_signin
+
   def index
     @event = Event.find(params[:event_id])
     @registrations = @event.registrations
