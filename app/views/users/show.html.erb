@@ -16,3 +16,18 @@
   <%= link_to 'Edit', edit_user_path(@user) %> |
   <%= link_to 'Delete', @user, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> |
 <% end %>
+
+
+<h2>Registrations</h2>
+<% if @registrations.any? %>
+  <ul>
+    <% @registrations.each do |registration| %>
+      <li>
+        <strong>Event:</strong> <%= link_to registration.event.name, registration.event %><br>
+        <strong>Registered At:</strong> <%= registration.created_at.strftime("%B %d, %Y %I:%M %p") %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No registrations found.</p>
+<% end %>
