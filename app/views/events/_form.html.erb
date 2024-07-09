@@ -40,14 +40,6 @@
   </div>
 
   <div>
-    <%= form.label :image_file_name %>
-    <%= form.text_field :image_file_name, required: false %>
-    <% if event.errors[:image_file_name].any? %>
-      <p><%= event.errors[:image_file_name].first %></p>
-    <% end %>
-  </div>
-
-  <div>
     <%= form.label :description %>
     <%= form.text_area :description, rows: 7, required: false %>
     <% if event.errors[:description].any? %>
