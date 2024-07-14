@@ -19,7 +19,7 @@
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <% if current_user %>
-          <%= link_to current_user.name, current_user, style: 'color: #4a5568; text-decoration: none; transition: color 0.3s ease;' %>
+          <%= link_to (current_user.name + (current_user.admin? ? ' (Admin)' : '')), current_user, style: 'color: #4a5568; text-decoration: none; transition: color 0.3s ease;' %>
           <%= link_to 'Sign Out', session_path, data: { turbo_method: :delete }, style: 'color: #4a5568; text-decoration: none; padding: 8px 16px; border: 1px solid #4a5568; border-radius: 8px; transition: color 0.3s ease, background-color 0.3s ease;' %>
         <% else %>
           <%= link_to 'Sign Up', signup_path, style: 'color: #4a5568; text-decoration: none; padding: 8px 16px; border: 1px solid #4a5568; border-radius: 8px; transition: color 0.3s ease, background-color 0.3s ease;' %>
@@ -31,5 +31,4 @@
 
   <%= yield %>
 </body>
-
 </html>
