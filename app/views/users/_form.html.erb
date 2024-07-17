@@ -32,6 +32,11 @@
   </div>
 
   <div>
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+
+  <div>
     <%= form.submit user.new_record? ? 'Create Account' : 'Update Account' %>
   </div>
 <% end %>
