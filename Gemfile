@@ -16,6 +16,8 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker', '~> 3.0'
 end
 
 group :development do
