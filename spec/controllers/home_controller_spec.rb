@@ -1,12 +1,9 @@
-require 'rails_helper'
-
 RSpec.describe HomeController, type: :controller do
+  describe 'GET #index' do
+    before { get :index }
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
+    it { is_expected.to respond_with(:success) }
+    it { is_expected.to render_template('index') }
+    
   end
-
 end
