@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let!(:user) { FactoryBot.create(:user) }
-  let!(:another_user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:another_user) { FactoryBot.create(:user) }
 
   describe 'GET #index' do
     before { get :index }
@@ -11,6 +11,8 @@ RSpec.describe UsersController, type: :controller do
     it { is_expected.to render_template(:index) }
 
     it 'assigns all users to @users' do
+      user
+      another_user
       expect(assigns(:users)).to match_array([user, another_user])
     end
   end
@@ -101,7 +103,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'PATCH #update' do
     context 'with valid attributes' do
-      let(:new_attributes) { { name: 'Updated Name', email:'updated@gmail.com', password:'updatedpass', password_confirmation:'updatedpass' } }
+      let(:new_attributes) { { name: 'Updated Name', email: 'updated@gmail.com', password: 'updatedpass', password_confirmation: 'updatedpass' } }
 
       it 'updates the user' do
         patch :update, params: { id: user.id, user: new_attributes }
@@ -135,6 +137,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'DELETE #destroy' do
     it 'destroys the requested user' do
+      user
       expect {
         delete :destroy, params: { id: user.id }
       }.to change(User, :count).by(-1)
