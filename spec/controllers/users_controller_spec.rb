@@ -101,7 +101,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'PATCH #update' do
     context 'with valid attributes' do
-      let(:new_attributes) { { name: 'Updated Name' } }
+      let(:new_attributes) { { name: 'Updated Name', email:'updated@gmail.com', password:'updatedpass', password_confirmation:'updatedpass' } }
 
       it 'updates the user' do
         patch :update, params: { id: user.id, user: new_attributes }
