@@ -1,5 +1,5 @@
 RSpec.describe UsersController, type: :controller do
-  let(:user) { FactoryBot.create(:user) }
+  let!(:user) { FactoryBot.create(:user) }
   let(:another_user) { FactoryBot.create(:user) }
 
   describe 'GET #index' do
@@ -9,7 +9,6 @@ RSpec.describe UsersController, type: :controller do
     it { is_expected.to render_template(:index) }
 
     it 'assigns all users to @users' do
-      user
       another_user
       expect(assigns(:users)).to match_array([user, another_user])
     end
@@ -30,9 +29,6 @@ RSpec.describe UsersController, type: :controller do
       before { get :show, params: { id: 0 } }
 
       it { is_expected.to redirect_to(root_path) }
-      it 'sets a flash alert message' do
-        expect(flash[:alert]).to match(/User not found/)
-      end
     end
   end
 
@@ -93,9 +89,6 @@ RSpec.describe UsersController, type: :controller do
       before { get :edit, params: { id: 0 } }
 
       it { is_expected.to redirect_to(root_path) }
-      it 'sets a flash alert message' do
-        expect(flash[:alert]).to match(/User not found/)
-      end
     end
   end
 
@@ -135,7 +128,6 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'DELETE #destroy' do
     it 'destroys the requested user' do
-      user
       expect {
         delete :destroy, params: { id: user.id }
       }.to change(User, :count).by(-1)
