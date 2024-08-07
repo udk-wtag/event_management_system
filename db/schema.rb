@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_06_27_052948) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
@@ -28,7 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_052948) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.string "email", null: false
+    t.citext "email", null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
