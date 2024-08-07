@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_09_101057) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_052948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+    t.string "location", limit: 100, null: false
+    t.decimal "price", default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "starts_at", null: false
+    t.text "description", null: false
+    t.string "image_file_name", default: "placeholder.png"
+    t.integer "capacity", default: 1
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
