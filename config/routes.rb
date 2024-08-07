@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
 
 
-  resources :events
+  resources :events do
+    resources :registrations
+  end
 end
